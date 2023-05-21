@@ -164,9 +164,8 @@ class Pix2Pix():
         #   num += 1
       
       # 每25个epoch在测试集上运行一次
-      print((epoch+1) % 1)
-      if (epoch+1) % 1 == 0:
-        gan.test(1, epoch+1)
+      if (epoch+1) % 25 == 0:
+        gan.test(180, epoch+1)
 
 
   def sample_images(self, num):
@@ -215,9 +214,10 @@ class Pix2Pix():
 
 if __name__ == '__main__':
   # param
-  epochs=3
+  epochs=75
   batch_size=4
   sample_interval=100
+  test_size=180
 
   gan = Pix2Pix()
   gan.train(epochs=epochs, batch_size=batch_size, sample_interval=sample_interval)  # batch = 100/1 = 100   savepic = 100/25 * 50 = 200
